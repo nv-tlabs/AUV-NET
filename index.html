@@ -325,6 +325,24 @@ figure {
 
 
     <section id="results">
+        <h2>Method</h2>
+        <hr>
+
+        <figure style="width: 100%;">
+            <a href="assets/network_img.jpg">
+                <img width="100%" src="assets/network_img.jpg">
+            </a>
+            <p class="caption" style="margin-bottom: 1px;">
+<strong>Network architecture</strong> of our AUV-Net is shown above.
+The core of AUV-Net is an unsupervised texture alignment module, inspired by Principal Component Analysis (PCA). Specifically, the basis generator networks predict basis images shared by all shapes in the training set. Then, those basis images are linearly combined with respect to the predicted per-shape coefficients to produce the texture images of each shape. Such a process forces the network to learn aligned texture images so that they can be effectively decomposed into basis images. 
+The encoder predicts the shape code and the coefficients from the voxelized input point cloud. The UV mapper and the masker take as input the shape code and the query points from the input point cloud, and output the UV coordinates and the segmentation mask, respectively. The UV coordinates are fed into the two basis generators to obtain the basis colors for each query point, and the basis colors are multiplied by the predicted coefficients to generate the actual colors for each query point. Those colors from the two basis generators are selected by the predicted segmentation mask to produce the final colors.
+            </p>
+        </figure>
+        
+    </section>
+
+
+    <section id="results">
         <h2>Results</h2>
         <hr>
 
@@ -377,8 +395,7 @@ their texture images. In the above figure, we also show results on transferring 
                 <img width="100%" src="assets/gen_img.jpg">
             </a>
             <p class="caption"> <br /><strong>Texture Synthesis</strong>.
-            A great advantage of having aligned
-texture images is that it allows us to utilize existing 2D generative models to synthesize new textures, and easily map them to provided 3D shapes. We train StyleGAN2 in experiments and show results above. Note that, the holes on chairs are hallucinated via texture transparency (alpha channels in the texture images). 
+A big advantage of having aligned texture images is that it allows us to utilize existing 2D generative models to synthesize new textures, and easily map them onto the provided 3D shapes. We train StyleGAN2 in experiments and show results above. Note that we are provided with geometry and only synthesize texture. Notice that the holes in chairs are hallucinated via texture transparency (alpha channels in the texture images).
             </p>
         </figure>
             <section id="results">
@@ -412,22 +429,6 @@ texture images from the texture latent code, and an IM-Net decoder to predict th
     </section>
     
     
-
-    <section id="results">
-        <h2>Method</h2>
-        <hr>
-
-        <figure style="width: 100%;">
-            <a href="assets/network_img.jpg">
-                <img width="100%" src="assets/network_img.jpg">
-            </a>
-            <p class="caption" style="margin-bottom: 1px;">
-<strong>Network architecture</strong> of our AUV-Net is shown above.
-The core of AUV-Net is an unsupervised texture alignment module, inspired by Principal Component Analysis (PCA). Specifically, the basis generator networks predict basis images shared by all shapes in the training set. Then, those basis images are linearly combined with respect to the predicted per-shape coefficients to produce the texture images of each shape. Such a process forces the network to learn aligned texture images so that they can be effectively decomposed into basis images. 
-The encoder predicts the shape code and the coefficients from the voxelized input point cloud. The UV mapper and the masker take as input the shape code and the query points from the input point cloud, and output the UV coordinates and the segmentation mask, respectively. The UV coordinates are fed into the two basis generators to obtain the basis colors for each query point, and the basis colors are multiplied by the predicted coefficients to generate the actual colors for each query point. Those colors from the two basis generators are selected by the predicted segmentation mask to produce the final colors.
-            </p>
-        </figure>
-        
 
 
 
